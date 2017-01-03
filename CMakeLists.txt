@@ -111,7 +111,7 @@ add_library(${json_library_TARGET} STATIC ${json_all_HEADERS} ${json_all_SOURCES
 target_include_directories(${json_library_TARGET} PUBLIC ${json_INCLUDE_DIR})
 
 if(WIN32)
-  target_compile_options(${json_library_TARGET} PRIVATE "/MT$<$<CONFIG:Debug>:d>")
+  # target_compile_options(${json_library_TARGET} PRIVATE "/MT$<$<CONFIG:Debug>:d>")
 else()
   set_source_files_properties(${json_detail_SSE42_SOURCES} PROPERTIES COMPILE_FLAGS "-msse4.2")
 endif()
@@ -124,7 +124,7 @@ set(BUILD_TESTING OFF)
 add_subdirectory(vendor/double-conversion)
 
 if(WIN32)
-  target_compile_options(double-conversion PRIVATE "/MT$<$<CONFIG:Debug>:d>")
+  # target_compile_options(double-conversion PRIVATE "/MT$<$<CONFIG:Debug>:d>")
   target_compile_options(double-conversion PRIVATE "/w")
 else()
   target_compile_options(double-conversion PRIVATE "-w")
